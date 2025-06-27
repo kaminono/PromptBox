@@ -1,5 +1,18 @@
 ---
-description:
-globs:
+description: 
+globs: lib/**,hooks/**
 alwaysApply: false
 ---
+---
+description: 浏览器端数据持久化与同步规则  
+globs:
+  - "lib/**"
+  - "hooks/**"
+alwaysApply: false
+---
+
+- 默认使用 `idb-keyval` 简化 IndexedDB；小于 2 KB 的临时 KV 放 localStorage。  
+- 所有持久化 API 返回 Promise；统一错误类型 `StorageError`.  
+- 任何版本迁移逻辑写在 `src/lib/storage/migrations.ts`, 并在 App 启动自动执行。  
+- IndexedDB 表结构：`prompts`, `versions`, `settings`. 无多表 JOIN。  
+- 禁止直接操作 `indexedDB.open`；必须走封装层。  

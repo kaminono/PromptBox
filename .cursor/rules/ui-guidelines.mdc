@@ -1,5 +1,18 @@
 ---
-description:
-globs:
+description: 
+globs: components/**,app/**/page.tsx
 alwaysApply: false
 ---
+---
+description: Tailwind + Framer Motion 统一 UI 规范  
+globs:
+  - "components/**"
+  - "app/**/page.tsx"
+alwaysApply: false
+---
+
+- 所有样式优先 Tailwind；自定义颜色通过 `tailwind.config.ts` 的 `extend.colors`。  
+- 交互动效统一使用 **Framer Motion**，持续时间 0.25 s、缓动 `easeOut`。  
+- 移动端以 `sm:` 为分界，保证 360 px 宽度可用。  
+- 组件 Props 排序：`children` → 受控属性 → 回调 → 可选扩展。  
+- 禁止在组件内部直接访问 `localStorage`，应调用 `useStorage()` Hook。  

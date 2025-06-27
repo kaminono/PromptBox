@@ -1,5 +1,26 @@
 ---
-description:
-globs:
-alwaysApply: false
+description: 
+globs: 
+alwaysApply: true
 ---
+---
+description: PromptBox 核心架构 & 编码原则  
+alwaysApply: true
+---
+
+# 技术栈与结构  
+- 使用 **Next.js 15 App Router**；目录按 *app/ 路由* 与 *src/components* 分层。  
+- 组件必须为 **函数式 React + TypeScript**；文件名采用 `PascalCase.tsx`。  
+
+# 数据与状态  
+- 所有业务数据持久化到 **localStorage 或 IndexedDB (idb)**，绝不调用服务器 API。  
+- 全局状态用 React Context + Zustand，禁止使用 Redux。  
+
+# 开发规范优先级  
+1. First Principles → 2. YAGNI → 3. KISS → 4. SOLID → 5. DRY。  
+  - 新功能迭代遵循 YAGNI > KISS > SOLID > DRY > First Principles。  
+  - 小工具函数优先 KISS > DRY > YAGNI > SOLID > First Principles。  
+
+# 其他约束  
+- 代码与文案全部英文；注释用英文。  
+- 单元测试采用 **Vitest + React Testing Library**；覆盖率 ≥ 70%。  
