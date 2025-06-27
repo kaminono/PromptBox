@@ -1,0 +1,14 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+---
+description: 提示词版本保存与历史回溯规范  
+alwaysApply: false
+---
+
+- 每次用户点击 **Save**，即创建一条 `VersionEntry { id, promptId, content, savedAt }`.  
+- 在历史面板中允许 **Preview → Restore**；恢复操作会写一条新的版本，而非修改旧记录。  
+- 版本数据按 `promptId` 倒序读取，分页大小 20。  
+- 如需生成 “比较差异” 视图，使用 `diff-match-patch` 工具库。  
